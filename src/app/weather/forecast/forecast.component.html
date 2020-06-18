@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let forecast of forecast$ | async">
+    <p class="temp">{{ forecast.temp | number: '1.0-0' }}°F</p>
+    <p class="day">{{ forecast.dateString | date: 'E'}}</p>
+  </li>
+</ul>
