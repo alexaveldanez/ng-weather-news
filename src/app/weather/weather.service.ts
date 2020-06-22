@@ -4,16 +4,40 @@ import { Observable, of, throwError } from 'rxjs';
 import { map, switchMap, pluck, mergeMap, filter, toArray, share, tap, catchError, retry } from 'rxjs/operators';
 
 import { OpenWeatherResponse } from './open-weather.response';
+import { NotificationsService } from '../notifications/notifications.service';
+import { CurrentWeatherResponse } from './current-weather.response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ForecastService {
-  private url = 'https://api.openweathermap.org/data/2.5/forecast';
+export class WeatherService {
+  private forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+  private weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private notificationsService: NotificationsService
     ) { }
+
+  getCurrentWeather() {
+    return this.getCurrentLocation().pipe(
+      map(coords => {
+        return new HttpParams()
+        .set('lat', String(coords.latitude))
+        .set('lon', String(coords.longitude))
+        .set('units', 'imperial')
+        .set('appid', 'cb4963516c6476a202fd162fb6bbdbe8');
+      }),
+      switchMap(params => this.http.get<CurrentWeatherResponse>(this.weatherUrl, { params })),
+      map((value) => {
+        return {
+          temp: value.main.temp,
+          city: value.name,
+          sunsetTime: value.sys.sunset
+        };
+      })
+      );
+  }
 
   getForecast() {
     return this.getCurrentLocation().pipe(
@@ -25,7 +49,7 @@ export class ForecastService {
         .set('appid', 'cb4963516c6476a202fd162fb6bbdbe8');
       }),
       // switchMap - an observable the emits the newest value and deletes the previous old value
-      switchMap(params => this.http.get<OpenWeatherResponse>(this.url, { params })
+      switchMap(params => this.http.get<OpenWeatherResponse>(this.forecastUrl, { params })
       ),
       // pluck - pull value out of the object that is being emitted from the http response
       pluck('list'),
@@ -57,7 +81,19 @@ export class ForecastService {
         },
         (err) => observer.error(err)
       );
-    });
+    }).pipe(
+      retry(1),
+      tap(() => {
+        this.notificationsService.addSuccess('Got your location');
+      }
+    ),
+    catchError((err) => {
+      // handle error
+      this.notificationsService.addError('Failed to get your location');
+      // return a new observable
+      return throwError(err);
+    })
+    );
   }
 
 }

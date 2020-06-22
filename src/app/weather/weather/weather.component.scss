@@ -1,0 +1,62 @@
+:host {
+  //
+}
+.weather-main {
+  display: block;
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  background: black;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
+  color: white;
+}
+
+.weather-row {
+  display:block;
+  margin:0 auto;
+  width: fit-content;
+}
+
+.temp {
+  display:block;
+  margin:0 auto;
+  width: fit-content;
+  font-size: 40px;
+  margin-top: 5px;
+}
+
+.sun {
+  font-size: 60px;
+  margin-top: 10px;
+  color: yellow;
+  filter: drop-shadow(1px 1px 10px yellow);
+}
+
+.moon {
+  font-size: 60px;
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloud {
+  font-size: 60px;
+  margin-top: -40px;
+  color: rgb(104, 175, 197);
+  filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+  animation-name: cloudMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+
+}
+
+@keyframes cloudMovement{
+  from{margin-left: 15px;}
+  to{margin-left: 85px;}
+}
+
+.weather-city {
+  font-size: 18px;
+}

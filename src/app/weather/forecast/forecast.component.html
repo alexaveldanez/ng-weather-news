@@ -1,4 +1,6 @@
+
 <ul>
+  <h3>5-day forecast</h3>
   <li *ngFor="let forecast of forecast$ | async">
     <p class="temp">{{ forecast.temp | number: '1.0-0' }}°F</p>
     <p class="day">{{ forecast.dateString | date: 'E'}}</p>

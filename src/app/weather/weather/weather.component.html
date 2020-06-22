@@ -1,0 +1,17 @@
+<h2>Current Weather</h2>
+<div class="weather-main" *ngIf="currentWeather">
+  <div class="temp weather-row">{{ currentWeather.temp | number: '1.0-0'}}°F</div>
+  <div class="weather-row" *ngIf="isDayTime">
+    <fa-icon class="sun" [icon]="['fas', 'sun']"></fa-icon>
+  </div>
+  <div class="moon weather-row" *ngIf="!isDayTime">
+    <fa-icon [icon]="['fas', 'moon']"></fa-icon>
+  </div>
+  <div class="cloud weather-row">
+    <fa-icon [icon]="['fas', 'cloud']"></fa-icon>
+  </div>
+  <div class="weather-row">
+    <fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon>
+  </div>
+  <div class="weather-row weather-city">{{ currentWeather.city }}</div>
+</div>

@@ -2,15 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForecastComponent } from './forecast/forecast.component';
 
+import { WeatherComponent } from './weather/weather.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 @NgModule({
-  declarations: [ForecastComponent],
+  declarations: [ForecastComponent, WeatherComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
-    ForecastComponent
+    ForecastComponent,
+    WeatherComponent,
+    FontAwesomeModule
   ]
 })
-export class WeatherModule { }
+export class WeatherModule {
+
+ }
