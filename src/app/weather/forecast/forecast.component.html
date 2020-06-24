@@ -1,8 +1,12 @@
+<div class="forecast-outer-card">
 
-<ul>
-  <h3>5-day forecast</h3>
-  <li *ngFor="let forecast of forecast$ | async">
-    <p class="temp">{{ forecast.temp | number: '1.0-0' }}°F</p>
+  <div>
+    <h3>Daily Forecast</h3>
+    <mat-card class="forecast-inner-card" *ngFor="let forecast of forecast$ | async">
     <p class="day">{{ forecast.dateString | date: 'E'}}</p>
-  </li>
-</ul>
+    <p class="temp">{{ forecast.temp | number: '1.0-0' }}°F</p>
+    <fa-icon class="sun" [icon]="['fas', 'sun']"></fa-icon>
+  </mat-card>
+  </div>
+
+</div>

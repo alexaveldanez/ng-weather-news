@@ -1,0 +1,24 @@
+<mat-card class="main-card">
+  <h1>💻 Tech News</h1>
+<div>
+<mat-card class="article-card" *ngFor="let article of techArticles">
+  <a
+  class="list-group-item list-group-item-action"
+  [href]="article.url"
+  target="_blank"
+  >
+  <div class="article-container">
+    <div class="img-container">
+      <img
+      [src]="article.urlToImage"
+      class="img">
+    </div>
+    <div>
+      {{ article.title | trimOutletName: article.source.name }}
+    </div>
+  </div>
+  </a>
+</mat-card>
+</div>
+
+</mat-card>

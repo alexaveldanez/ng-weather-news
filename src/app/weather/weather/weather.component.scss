@@ -1,13 +1,9 @@
-:host {
-  //
-}
 .weather-main {
   display: block;
   border-radius: 10px;
-  width: 200px;
-  height: 200px;
-  background: black;
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
+  width: 210px;
+  height: 210px;
+  background: linear-gradient(180deg, rgb(2, 6, 241) 0%, rgba(2, 98, 241) 50%, rgb(6, 13, 221) 100%);
   color: white;
 }
 
@@ -18,11 +14,15 @@
 }
 
 .temp {
-  display:block;
-  margin:0 auto;
+  display: block;
+  margin: 0 auto;
   width: fit-content;
   font-size: 40px;
-  margin-top: 5px;
+  padding: 20px;
+}
+
+.date-time {
+  font-size: 10px;
 }
 
 .sun {
@@ -42,7 +42,7 @@
 .cloud {
   font-size: 60px;
   margin-top: -40px;
-  color: rgb(104, 175, 197);
+  color: white;
   filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
   animation-name: cloudMovement;
   animation-iteration-count: infinite;

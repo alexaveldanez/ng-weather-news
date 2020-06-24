@@ -4,6 +4,7 @@ import { ForecastComponent } from './forecast/forecast.component';
 
 import { WeatherComponent } from './weather/weather.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -11,7 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [ForecastComponent, WeatherComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MaterialModule
   ],
   exports: [
     ForecastComponent,

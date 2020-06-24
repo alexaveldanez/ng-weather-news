@@ -33,6 +33,7 @@ export class WeatherService {
         return {
           temp: value.main.temp,
           city: value.name,
+          sunriseTime: value.sys.sunrise,
           sunsetTime: value.sys.sunset
         };
       })

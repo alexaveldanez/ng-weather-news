@@ -4,6 +4,7 @@ export interface CurrentWeatherResponse {
   };
   name: string;
   sys: {
+    sunrise: number
     sunset: number
   };
 }

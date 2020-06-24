@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
 
 import { Forecast } from '../forecast.model';
 import { WeatherService } from '../weather.service';
@@ -12,8 +14,9 @@ import { WeatherService } from '../weather.service';
 export class ForecastComponent implements OnInit {
   forecast$: Observable<Forecast[]>;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private library: FaIconLibrary) {
     this.forecast$ = weatherService.getForecast();
+    this.library.addIcons(faSun);
    }
 
   ngOnInit(): void {
