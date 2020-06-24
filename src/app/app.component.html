@@ -1,14 +1,36 @@
-<app-toolbar></app-toolbar>
-<div class="container">
-  <div class="weather-section">
-    <app-weather></app-weather>
-    <app-forecast></app-forecast>
+<app-shell>
+  <div class="container" *ngIf="!deviceXs">
+    <div class="weather-section">
+      <app-weather></app-weather>
+      <app-forecast></app-forecast>
+    </div>
+    <div class="news-section">
+      <app-news-articles></app-news-articles>
+    </div>
+    <div class="news-section">
+      <app-tech-news-articles></app-tech-news-articles>
+    </div>
   </div>
-  <div class="news-section">
-    <app-news-articles></app-news-articles>
-  </div>
-  <div class="news-section">
-    <app-tech-news-articles></app-tech-news-articles>
-  </div>
-  <!-- <app-notification-list></app-notification-list> -->
-</div>
+
+  <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="deviceXs">
+    <div>
+      <div class="xs-weather">
+        <app-weather></app-weather>
+      </div>
+      <div class="xs-weather">
+        <app-forecast></app-forecast>
+      </div>
+    </div>
+    <div class="xs-containers">
+      <div class="xs-containers">
+        <app-news-articles></app-news-articles>
+      </div>
+      <div class="xs-containers">
+        <app-tech-news-articles></app-tech-news-articles>
+      </div>
+    </div>
+
+    </div>
+</app-shell>
+
+<!-- <app-toolbar [deviceXs]="deviceXs"></app-toolbar> -->

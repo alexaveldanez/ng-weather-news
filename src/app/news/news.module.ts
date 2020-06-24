@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NewsArticlesComponent } from './news-articles/news-articles.component';
 import { TrimOutletNamePipe } from './trim-outlet-name.pipe';
-import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 import { TechNewsArticlesComponent } from './tech-news-articles/tech-news-articles.component';
 
 
@@ -12,7 +12,7 @@ import { TechNewsArticlesComponent } from './tech-news-articles/tech-news-articl
   declarations: [NewsArticlesComponent, TrimOutletNamePipe, TechNewsArticlesComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    SharedModule
   ],
   exports: [
     NewsArticlesComponent,

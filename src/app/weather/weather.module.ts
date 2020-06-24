@@ -4,7 +4,7 @@ import { ForecastComponent } from './forecast/forecast.component';
 
 import { WeatherComponent } from './weather/weather.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,7 +13,7 @@ import { MaterialModule } from '../material.module';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    MaterialModule
+    SharedModule
   ],
   exports: [
     ForecastComponent,
