@@ -26,7 +26,7 @@ export class WeatherService {
         .set('lat', String(coords.latitude))
         .set('lon', String(coords.longitude))
         .set('units', 'imperial')
-        .set('appid', 'cb4963516c6476a202fd162fb6bbdbe8');
+        .set('appid', 'apiKey');
       }),
       switchMap(params => this.http.get<CurrentWeatherResponse>(this.weatherUrl, { params })),
       map((value) => {
